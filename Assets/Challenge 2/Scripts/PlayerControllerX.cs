@@ -8,11 +8,6 @@ public class PlayerControllerX : MonoBehaviour
 
     private bool spawnDisabled = false;
 
-    void Start()
-    {
-
-    }
-
     // Update is called once per frame
     void Update()
     {
@@ -20,17 +15,17 @@ public class PlayerControllerX : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) && spawnDisabled == false)
         {
             Instantiate(dogPrefab, transform.position, dogPrefab.transform.rotation);
+
+            // disables spawning of dogs and re-enables it after 1 second
             Invoke("DisableSpawn", 0);
             Invoke("EnableSpawn", 1);
         }
     }
 
-    void DisableSpawn()
-    {
+    void DisableSpawn() {
         spawnDisabled = true;
     }
-    void EnableSpawn()
-    {
+    void EnableSpawn() {
         spawnDisabled = false;
     }
 }
